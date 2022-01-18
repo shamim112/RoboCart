@@ -8,8 +8,8 @@
 
 #include<NewPing.h>
 #include<AFMotor.h>
-#define RIGHT A2
-#define LEFT A3
+#define RIGHT A3
+#define LEFT A2
 #define TRIGGER_PIN A1
 #define ECHO_PIN A0
 #define MAX_DISTANCE 100
@@ -49,19 +49,19 @@ void loop() {
   Serial.println(Left_Value);
 
 if((Right_Value==1) && (distance>=10 && distance<=30)&&(Left_Value==1)){
-  Motor1.setSpeed(120);
+  Motor1.setSpeed(80);
   Motor1.run(FORWARD);
-  Motor4.setSpeed(120);
+  Motor4.setSpeed(80);
   Motor4.run(FORWARD);
 }else if((Right_Value==0) && (Left_Value==1)) {
-  Motor1.setSpeed(200);
-  Motor1.run(FORWARD);
-  Motor4.setSpeed(100);
-  Motor4.run(BACKWARD);
-}else if((Right_Value==1)&&(Left_Value==0)) {
   Motor1.setSpeed(100);
-  Motor1.run(BACKWARD);
-  Motor4.setSpeed(200);
+  Motor1.run(FORWARD);
+  Motor4.setSpeed(0);
+  Motor4.run(RELEASE);
+}else if((Right_Value==1)&&(Left_Value==0)) {
+  Motor1.setSpeed(0);
+  Motor1.run(RELEASE);
+  Motor4.setSpeed(100);
   Motor4.run(FORWARD);
 }else if((Right_Value==1)&&(Left_Value==1)) {
   Motor1.setSpeed(0);
